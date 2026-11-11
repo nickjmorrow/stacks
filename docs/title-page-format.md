@@ -1,5 +1,7 @@
 # Book page format
 
+**Historical.** Since the catalog moved into Stacks' own database, the server no longer reads or writes these pages. This file describes what `pnpm import-catalog` and the launch-day scripts read from (and once wrote to) the old book pages.
+
 How a book is stored in Grimoire. Stacks, its scripts and Claude (through the `stacks` skill) follow this file. Grimoire itself knows nothing about it: these are ordinary pages, tags and properties.
 
 Hoard (a sibling app for movies, shows and games, with its own copy of this file) uses the same page shape with its own `type` values. Stacks only reads and writes pages with `type:: book`, and never changes a page whose `type` is anything else.
