@@ -1,5 +1,5 @@
-// Fills the looked-up facts on a book's Grimoire page (author, year, genre, summary) from Open Library,
-// only where the page has none, and only when the match is clear. Unclear books wait in "Needs a look".
+// Fills the looked-up facts on a book's catalog entry (author, year, genre, summary) from Open Library,
+// only where it has none, and only when the match is clear. Unclear books wait in "Needs a look".
 
 import { fetchOpenLibraryCover, saveCover } from '../covers/covers.ts'
 import { coverPath, type FilesDeps } from '../files/addFile.ts'

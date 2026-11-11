@@ -1,5 +1,5 @@
-// Theme tokens. Midnight Sun is copied from ~/Projects/dotfiles/themes/midnight-sun/palette.json
-// (a test checks they match); Paper is Stacks' own light theme for daytime reading; Night is its warm, low-blue theme for reading in the dark.
+// Theme tokens. Midnight Sun is copied from that color theme's palette.json (a test checks they match
+// where the file exists); Paper is Stacks' own light theme for daytime reading; Night is its warm, low-blue theme for reading in the dark.
 
 public struct ThemeTokens: Equatable, Sendable {
     public var background: String

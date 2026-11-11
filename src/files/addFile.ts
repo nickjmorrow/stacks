@@ -1,5 +1,5 @@
 // Adding a book file to Stacks: keep the file, read what it says about itself, save a cover, and
-// link it to the book's Grimoire page (finding or creating the page through the type guard).
+// link it to the book's catalog entry (finding or creating it through the type guard).
 
 import { createHash, randomUUID } from 'node:crypto'
 import { mkdirSync, writeFileSync } from 'node:fs'

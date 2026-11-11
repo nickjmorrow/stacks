@@ -1,4 +1,4 @@
-// One book: the facts from Grimoire, what the reader thinks of it (every change saves at once), its highlights
+// One book: its looked-up facts, what the reader thinks of it (every change saves at once), its highlights
 // and notes, and the Read button.
 
 import SwiftUI

@@ -1,4 +1,4 @@
-// The library: each book with a file, joining its Grimoire page (what the owner thinks) with
+// The library: each book with a file, joining its catalog entry (what the owner thinks) with
 // Stacks' row (the file and looked-up extras). Edits still waiting in the outbox are shown as made.
 
 import type { LibraryBook, LibraryResponse } from '../shared/api.ts'

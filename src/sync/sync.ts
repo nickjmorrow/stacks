@@ -1,5 +1,6 @@
 // A device's sync: store what it sends, answer with what changed since its cursor, and update
-// the book's Grimoire page where reading implies it (to read → reading once the reader is 3% in; a daily progress note).
+// the book's catalog entry where reading implies it (to read → reading once the reader is 3% in; progress
+// when a book is closed, at most once a day).
 
 import type { SyncRequest, SyncResponse } from '../shared/api.ts'
 import type { BookEditor } from '../library/editor.ts'

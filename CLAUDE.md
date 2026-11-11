@@ -4,7 +4,7 @@ A personal books app: it organizes EPUB and PDF books, combines the owner's note
 
 This repo is public: tests, fixtures, sample data, docs and comments must be generic, with no personal data (real names, personal media or reading lists, calendars, health, money, machine names).
 
-Split from Hoard (a sibling app for movies, shows and games) on 2026-10-20. Hoard keeps its titles as pages in Grimoire; Stacks no longer does (see below).
+Split from Hoard (a sibling app for movies, shows and games) on 2026-10-20. Both apps once kept their titles as pages in Grimoire; neither does now (see below).
 
 ## Data lives in Stacks (since 2026-11-01)
 Everything about a book is tracked solely in Stacks: status, rating, tags (and their groups), who recommended it, finished date, progress and the looked-up author, year, genre and summary. It sits in the catalog tables of Stacks' own database (`src/catalog/`, `src/store/`), next to the files, positions, sessions and highlights.

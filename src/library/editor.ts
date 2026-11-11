@@ -1,5 +1,6 @@
-// Changes to a book's Grimoire page made from the app. When grim fails, the change waits in the
-// store's outbox and is retried in order, so the app never loses an edit to a busy Grimoire.
+// Changes to a book made from the app, through GrimoirePort (the catalog on the server; originally the
+// Grimoire adapter). When a write fails with a GrimError, the change waits in the store's outbox and is
+// retried in order, so the app never loses an edit.
 
 import { GrimError } from '../grimoire/grim.ts'
 import { NotFoundError, type Grimoire, type SetFieldsOptions } from '../grimoire/grimoire.ts'
