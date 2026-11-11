@@ -1,6 +1,7 @@
 {
   "name": "stacks",
   "description": "Self-hosted EPUB and PDF library: Node server with a SQLite catalog and sync API for a SwiftUI reader on iPhone, iPad and Mac.",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "engines": {
