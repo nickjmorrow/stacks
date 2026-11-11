@@ -3,8 +3,9 @@ import Testing
 @testable import StacksKit
 
 @Test func midnightMatchesPaletteJSON() throws {
-    let url = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Projects/dotfiles/themes/midnight-sun/palette.json")
-    guard let data = try? Data(contentsOf: url) else { return } // only where that theme file exists
+    // Checks Midnight against a shared theme file when STACKS_PALETTE_JSON points at one; skipped otherwise.
+    guard let path = ProcessInfo.processInfo.environment["STACKS_PALETTE_JSON"],
+          let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else { return }
     let json = try #require(try JSONSerialization.jsonObject(with: data) as? [String: Any])
     let surface = try #require(json["surface"] as? [String: String])
     let text = try #require(json["text"] as? [String: String])
