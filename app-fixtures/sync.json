@@ -1,0 +1,121 @@
+{
+  "request": {
+    "device": "iphone",
+    "since": 0,
+    "positions": [
+      {
+        "bookId": "b1",
+        "device": "iphone",
+        "locator": {
+          "href": "OEBPS/ch1.xhtml",
+          "type": "application/xhtml+xml",
+          "locations": {
+            "progression": 0.5,
+            "totalProgression": 0.43
+          }
+        },
+        "progression": 0.43,
+        "updatedAt": 1792508400000
+      }
+    ],
+    "sessions": [
+      {
+        "sessionId": "s1",
+        "bookId": "b1",
+        "device": "iphone",
+        "startedAt": 1792507800000,
+        "endedAt": 1792508400000,
+        "activeSeconds": 540,
+        "startProgression": 0.4,
+        "endProgression": 0.43,
+        "pagesTurned": 12
+      }
+    ],
+    "annotations": [
+      {
+        "annotationId": "a1",
+        "bookId": "b1",
+        "kind": "note",
+        "color": "yellow",
+        "locator": {
+          "href": "OEBPS/ch1.xhtml",
+          "type": "application/xhtml+xml",
+          "locations": {
+            "progression": 0.5
+          },
+          "text": {
+            "before": "The ",
+            "highlight": "spice must flow",
+            "after": "."
+          }
+        },
+        "text": "spice must flow",
+        "note": "the whole book in four words",
+        "createdAt": 1792508400000,
+        "updatedAt": 1792508400000,
+        "deletedAt": null,
+        "device": "iphone",
+        "source": "stacks"
+      }
+    ]
+  },
+  "response": {
+    "cursor": 4,
+    "positions": [
+      {
+        "bookId": "b1",
+        "device": "iphone",
+        "locator": {
+          "href": "OEBPS/ch1.xhtml",
+          "type": "application/xhtml+xml",
+          "locations": {
+            "progression": 0.5,
+            "totalProgression": 0.43
+          }
+        },
+        "progression": 0.43,
+        "updatedAt": 1792508400000
+      }
+    ],
+    "sessions": [
+      {
+        "sessionId": "s1",
+        "bookId": "b1",
+        "device": "iphone",
+        "startedAt": 1792507800000,
+        "endedAt": 1792508400000,
+        "activeSeconds": 540,
+        "startProgression": 0.4,
+        "endProgression": 0.43,
+        "pagesTurned": 12
+      }
+    ],
+    "annotations": [
+      {
+        "annotationId": "a1",
+        "bookId": "b1",
+        "kind": "note",
+        "color": "yellow",
+        "locator": {
+          "href": "OEBPS/ch1.xhtml",
+          "type": "application/xhtml+xml",
+          "locations": {
+            "progression": 0.5
+          },
+          "text": {
+            "before": "The ",
+            "highlight": "spice must flow",
+            "after": "."
+          }
+        },
+        "text": "spice must flow",
+        "note": "the whole book in four words",
+        "createdAt": 1792508400000,
+        "updatedAt": 1792508400000,
+        "deletedAt": null,
+        "device": "iphone",
+        "source": "stacks"
+      }
+    ]
+  }
+}

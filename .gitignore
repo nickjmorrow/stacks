@@ -1,0 +1,21 @@
+node_modules/
+dist/
+.env
+.superpowers/
+migration-report.md
+.staging/
+app/*.xcodeproj
+app/build.noindex/
+app/StacksKit/.build/
+app/StacksKit/.swiftpm/
+build-*.log
+CLAUDE.local.md
+
+# Planning and history notes (kept locally, not published)
+docs/superpowers/
+docs/intent/
+docs/build-log-*.md
+docs/launch-day.md
+docs/design-notes.md
+# Local list for scripts/merge-pages (see its cli.ts)
+scripts/merge-pages/*.local.json

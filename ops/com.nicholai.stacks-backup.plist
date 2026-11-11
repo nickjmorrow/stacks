@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Nightly copy of Stacks' books and database into $STACKS_BACKUP_DIR. Copied by ops/deploy.sh. -->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.nicholai.stacks-backup</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>__HOME__/Projects/stacks/ops/backup.sh</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>3</integer>
+		<key>Minute</key>
+		<integer>30</integer>
+	</dict>
+	<key>StandardOutPath</key>
+	<string>__HOME__/Library/Logs/stacks-backup.log</string>
+	<key>StandardErrorPath</key>
+	<string>__HOME__/Library/Logs/stacks-backup.log</string>
+</dict>
+</plist>

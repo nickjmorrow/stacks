@@ -1,0 +1,31 @@
+{
+  "name": "stacks",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=26"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "migrate": "node scripts/migrate/cli.ts",
+    "import-apple-books": "node scripts/import-apple-books/cli.ts",
+    "serve": "node src/server/main.ts",
+    "merge-pages": "node scripts/merge-pages/cli.ts",
+    "stage-files": "node scripts/stage-files/cli.ts",
+    "add-files": "node scripts/add-files/cli.ts",
+    "import-annotations": "node scripts/import-annotations/cli.ts",
+    "import-catalog": "node scripts/import-catalog/cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "fast-xml-parser": "^5.11.2",
+    "fflate": "^0.8.3",
+    "hono": "^4.13.13"
+  }
+}

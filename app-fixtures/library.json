@@ -1,0 +1,27 @@
+{
+  "books": [
+    {
+      "bookId": "b1",
+      "pageId": "p1",
+      "pageTitle": "Dune (1965)",
+      "name": "Dune",
+      "status": "want",
+      "tags": [],
+      "format": "epub",
+      "fileSize": 100,
+      "fileSha256": "sha1",
+      "coverUrl": "/api/books/b1/cover",
+      "addedAt": 1000,
+      "lookupState": "pending",
+      "lastReadAt": null,
+      "pendingEdit": false,
+      "year": 1965,
+      "summary": "Spice.",
+      "author": "Frank Herbert",
+      "isbn": "9780441013593",
+      "appleBooksId": "AB1"
+    }
+  ],
+  "tags": [],
+  "cursor": 1
+}

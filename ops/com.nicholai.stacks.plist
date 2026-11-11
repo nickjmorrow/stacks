@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Copied into ~/Library/LaunchAgents on the server by ops/deploy.sh (__HOME__ is replaced with the server home directory). -->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.nicholai.stacks</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>__HOME__/Projects/stacks/ops/run.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+	<key>ThrottleInterval</key>
+	<integer>10</integer>
+	<key>StandardOutPath</key>
+	<string>__HOME__/Library/Logs/stacks.log</string>
+	<key>StandardErrorPath</key>
+	<string>__HOME__/Library/Logs/stacks.log</string>
+</dict>
+</plist>

@@ -1,0 +1,142 @@
+# Generates Stacks.xcodeproj: `cd app && ./generate-project.sh` (the .xcodeproj isn't committed; it carries values from .env).
+name: Stacks
+options:
+  bundleIdPrefix: com.nicholai
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    DEVELOPMENT_TEAM: ZXYW4ZP89B
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "2"
+packages:
+  Readium:
+    url: https://github.com/readium/swift-toolkit.git
+    exactVersion: 3.11.0
+  StacksKit:
+    path: StacksKit
+targets:
+  Stacks:
+    type: application
+    platform: iOS
+    supportedDestinations: [iOS, macCatalyst]
+    sources: [Stacks]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nicholai.stacks
+        # The default server, injected from .env at project generation (see generate-project.sh).
+        STACKS_SERVER_URL: ${STACKS_SERVER_URL}
+        # The Mac build uses a team-prefixed app group (see StacksKit/AppGroup.swift).
+        "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": Stacks/Stacks-mac.entitlements
+        PRODUCT_NAME: Stacks
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Stacks
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown"
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.books
+        INFOPLIST_KEY_UIUserInterfaceStyle: Dark
+        TARGETED_DEVICE_FAMILY: "1,2,6"
+        SUPPORTS_MACCATALYST: YES
+    info:
+      path: Stacks/Info.plist
+      properties:
+        StacksServerURL: $(STACKS_SERVER_URL)
+        # The app only talks to its own self-hosted server. A Mac with Tailscale DNS off reaches it by tailnet IP
+        # over plain HTTP; tailnet traffic is encrypted by WireGuard.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+        UIAppFonts: []
+        # stacks://book/<id> opens a book in the reader (the widget's links); see StacksKit/DeepLink.swift.
+        CFBundleURLTypes:
+          - CFBundleURLName: com.nicholai.stacks
+            CFBundleURLSchemes: [stacks]
+        # Open With / double-click: EPUBs (and PDFs, as Alternate) are added to the library like the share extension does.
+        # Without this LaunchServices ignores the document types on Mac Catalyst. The app copies the file, never edits it.
+        LSSupportsOpeningDocumentsInPlace: true
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: EPUB book
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Default
+            LSItemContentTypes: [org.idpf.epub-container]
+            CFBundleTypeExtensions: [epub]
+          - CFBundleTypeName: PDF document
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes: [com.adobe.pdf]
+            CFBundleTypeExtensions: [pdf]
+    entitlements:
+      path: Stacks/Stacks.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.nicholai.stacks]
+    dependencies:
+      - target: StacksShare
+      # The widget is iPhone and iPad only: not embedded in the Mac Catalyst build.
+      - target: StacksWidget
+        platformFilter: iOS
+      - package: StacksKit
+      - package: Readium
+        product: ReadiumShared
+      - package: Readium
+        product: ReadiumStreamer
+      - package: Readium
+        product: ReadiumNavigator
+  StacksShare:
+    type: app-extension
+    platform: iOS
+    supportedDestinations: [iOS, macCatalyst]
+    sources: [StacksShare]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nicholai.stacks.share
+        "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": StacksShare/StacksShare-mac.entitlements
+        PRODUCT_NAME: StacksShare
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Stacks
+        SUPPORTS_MACCATALYST: YES
+        TARGETED_DEVICE_FAMILY: "1,2,6"
+    info:
+      path: StacksShare/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.share-services
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShareViewController
+          NSExtensionAttributes:
+            NSExtensionActivationRule: >-
+              SUBQUERY(extensionItems, $item, SUBQUERY($item.attachments, $a,
+              ANY $a.registeredTypeIdentifiers UTI-CONFORMS-TO "org.idpf.epub-container"
+              || ANY $a.registeredTypeIdentifiers UTI-CONFORMS-TO "com.adobe.pdf").@count == 1).@count == 1
+    entitlements:
+      path: StacksShare/StacksShare.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.nicholai.stacks]
+    dependencies:
+      - package: StacksKit
+  StacksWidget:
+    type: app-extension
+    platform: iOS
+    supportedDestinations: [iOS]
+    # Theme.swift is shared with the app for the Midnight Sun colors.
+    sources: [StacksWidget, Stacks/Theme.swift]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nicholai.stacks.widget
+        PRODUCT_NAME: StacksWidget
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Reading
+        TARGETED_DEVICE_FAMILY: "1,2"
+    info:
+      path: StacksWidget/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: StacksWidget/StacksWidget.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.nicholai.stacks]
+    dependencies:
+      - package: StacksKit
